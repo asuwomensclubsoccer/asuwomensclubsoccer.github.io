@@ -70,9 +70,9 @@
             border: none;
         }
 
-        /* Hero Section with Giant Watermark Fork */
+        /* Clean Hero Section */
         .hero {
-            min-height: 95vh;
+            min-height: 90vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -81,24 +81,6 @@
             background: linear-gradient(135deg, #8C1D40 0%, #5c1b54 50%, #2a081a 100%);
             padding: 4rem 2rem;
             position: relative;
-            overflow: hidden;
-        }
-
-        /* Giant Background Pitchfork Watermark */
-        .hero-bg-fork {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: min(600px, 90vw);
-            opacity: 0.12;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .hero > *:not(.hero-bg-fork) {
-            position: relative;
-            z-index: 2;
         }
 
         /* Continuous Pulse Glow Animation for Logo */
@@ -372,7 +354,7 @@
             background-color: #ffcf40;
         }
 
-        /* FEAR THE FORK FOOTER */
+        /* FEAR THE FORK FOOTER WITH CLEAN PITCHFORK */
         footer {
             background-color: var(--maroon);
             padding: 4rem 2rem;
@@ -380,6 +362,13 @@
             border-top: 5px solid var(--bright-gold);
             color: #F8F6F0;
             text-align: center;
+        }
+
+        .footer-fork {
+            height: 50px;
+            width: auto;
+            margin-bottom: 1rem;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4));
         }
 
         footer h2 {
@@ -416,10 +405,8 @@
         <button id="theme-toggle" class="btn btn-gold">Light/Dark Mode</button>
     </nav>
 
-    <!-- Hero Section with Giant Pitchfork Watermark -->
+    <!-- Clean Hero Section -->
     <header class="hero">
-        <img src="fork.png" alt="" class="hero-bg-fork">
-
         <div class="logo-mask">
             <img src="logo.png" alt="ASU Women's Club Soccer Logo">
         </div>
@@ -583,8 +570,9 @@
         </div>
     </section>
 
-    <!-- FEAR THE FORK FOOTER -->
+    <!-- FEAR THE FORK FOOTER WITH CLEAN PITCHFORK -->
     <footer>
+        <img src="fork.png" alt="Pitchfork" class="footer-fork">
         <h2>Fear The Fork.</h2>
         <p>@womensclubsoccer_asu • Contact The Club</p>
         <p style="font-size: 0.9rem; margin-top: 1rem; text-transform: none;">&copy; 2026 ASU Women's Club Soccer. All rights reserved.</p>
