@@ -83,18 +83,26 @@
             position: relative;
         }
 
+        /* NEW: Continuous Pulse Glow Animation */
+        @keyframes pulse-glow {
+            0% { transform: scale(1); box-shadow: 0 0 30px rgba(255, 214, 77, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 0 70px rgba(255, 214, 77, 0.9); }
+            100% { transform: scale(1); box-shadow: 0 0 30px rgba(255, 214, 77, 0.4); }
+        }
+
         .logo-mask {
             width: 260px;
             height: 260px;
             border-radius: 50%;
             overflow: hidden; 
             border: 4px solid var(--bright-gold);
-            box-shadow: 0 0 40px rgba(255, 214, 77, 0.5);
             margin-bottom: 1.5rem;
             display: flex;
             justify-content: center;
             align-items: center;
             background-color: var(--cream);
+            /* Applies the pulse effect */
+            animation: pulse-glow 3.5s infinite ease-in-out;
         }
 
         .logo-mask img {
@@ -347,7 +355,7 @@
             background-color: #ffcf40;
         }
 
-        /* NEW FEAR THE FORK FOOTER */
+        /* FEAR THE FORK FOOTER */
         footer {
             background-color: var(--maroon);
             padding: 4rem 2rem;
@@ -428,7 +436,8 @@
 
     <!-- Hero Section -->
     <header class="hero">
-        <div class="logo-mask" data-aos="zoom-in" data-aos-duration="1000">
+        <!-- The data-aos animation has been removed so it loads instantly -->
+        <div class="logo-mask">
             <img src="logo.png" alt="ASU Women's Club Soccer Logo">
         </div>
         <h1 data-aos="fade-up" data-aos-delay="150">Women's Club Soccer</h1>
@@ -591,7 +600,7 @@
         </div>
     </section>
 
-    <!-- NEW FEAR THE FORK FOOTER -->
+    <!-- FEAR THE FORK FOOTER -->
     <footer>
         <div class="footer-left">
             <img src="fork.png" alt="ASU Pitchfork" class="fork-logo">
