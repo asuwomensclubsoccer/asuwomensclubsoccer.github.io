@@ -70,7 +70,7 @@
             border: none;
         }
 
-        /* Clean Hero Section */
+        /* Hero Section */
         .hero {
             min-height: 90vh;
             display: flex;
@@ -83,7 +83,6 @@
             position: relative;
         }
 
-        /* Continuous Pulse Glow Animation for Logo */
         @keyframes pulse-glow {
             0% { transform: scale(1); box-shadow: 0 0 30px rgba(255, 214, 77, 0.4); }
             50% { transform: scale(1.05); box-shadow: 0 0 70px rgba(255, 214, 77, 0.9); }
@@ -239,7 +238,6 @@
             box-shadow: 0 12px 25px rgba(0,0,0,0.2);
         }
         
-        /* Spotlight & Exec Images */
         .spotlight-img {
             width: 100%;
             height: auto;
@@ -354,7 +352,7 @@
             background-color: #ffcf40;
         }
 
-        /* FEAR THE FORK FOOTER WITH LARGE, VISIBLE PITCHFORK */
+        /* FEAR THE FORK FOOTER WITH THE NEW TEXT FORK LOGO */
         footer {
             background-color: var(--maroon);
             padding: 4rem 2rem;
@@ -364,11 +362,20 @@
             text-align: center;
         }
 
-        .footer-fork {
-            height: 120px; /* Made much bigger! */
-            width: auto;
+        .footer-fork-container {
+            background: rgba(0, 0, 0, 0.25);
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 12px;
             margin-bottom: 1.5rem;
-            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.6)); /* Adds a strong shadow so it pops against the maroon */
+            border: 2px solid var(--bright-gold);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+
+        .footer-fork {
+            height: 120px;
+            width: auto;
+            display: block;
         }
 
         footer h2 {
@@ -405,7 +412,7 @@
         <button id="theme-toggle" class="btn btn-gold">Light/Dark Mode</button>
     </nav>
 
-    <!-- Hero Section with Original Round Logo -->
+    <!-- Hero Section with the Round Sparky Logo (logo.png) -->
     <header class="hero">
         <div class="logo-mask">
             <img src="logo.png" alt="ASU Women's Club Soccer Logo">
@@ -570,9 +577,11 @@
         </div>
     </section>
 
-    <!-- FEAR THE FORK FOOTER WITH LARGE ASU FORK LOGO -->
+    <!-- FEAR THE FORK FOOTER WITH THE TEXT FORK (asufork.png) -->
     <footer>
-        <img src="asufork.png" alt="ASU Fork Logo" class="footer-fork">
+        <div class="footer-fork-container">
+            <img src="asufork.png" alt="ASU Fork Logo" class="footer-fork">
+        </div>
         <h2>Fear The Fork.</h2>
         <p>@womensclubsoccer_asu • Contact The Club</p>
         <p style="font-size: 0.9rem; margin-top: 1rem; text-transform: none;">&copy; 2026 ASU Women's Club Soccer. All rights reserved.</p>
