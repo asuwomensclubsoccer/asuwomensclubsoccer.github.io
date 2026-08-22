@@ -100,16 +100,17 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: var(--cream);
+            background: transparent !important;
+            box-shadow: none !important;
             animation: pulse-glow 3.5s infinite ease-in-out;
         }
 
         .logo-mask img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain; 
             object-position: center;
-            transform: scale(1.25); 
+            background: transparent !important;
         }
 
         .hero h1 {
@@ -405,10 +406,10 @@
         <button id="theme-toggle" class="btn btn-gold">Light/Dark Mode</button>
     </nav>
 
-    <!-- Clean Hero Section -->
+    <!-- Clean Hero Section with asufork.png -->
     <header class="hero">
         <div class="logo-mask">
-            <img src="logo.png" alt="ASU Women's Club Soccer Logo">
+            <img src="asufork.png" alt="ASU Women's Club Soccer Logo">
         </div>
         <h1 data-aos="fade-up" data-aos-delay="150">Women's Club Soccer</h1>
         <p data-aos="fade-up" data-aos-delay="300">Arizona State University</p>
@@ -572,7 +573,7 @@
 
     <!-- FEAR THE FORK FOOTER WITH CLEAN PITCHFORK -->
     <footer>
-        <img src="fork.png" alt="Pitchfork" class="footer-fork">
+        <img src="asufork.png" alt="Pitchfork" class="footer-fork">
         <h2>Fear The Fork.</h2>
         <p>@womensclubsoccer_asu • Contact The Club</p>
         <p style="font-size: 0.9rem; margin-top: 1rem; text-transform: none;">&copy; 2026 ASU Women's Club Soccer. All rights reserved.</p>
