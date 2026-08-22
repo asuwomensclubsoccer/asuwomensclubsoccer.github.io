@@ -70,20 +70,38 @@
             border: none;
         }
 
-        /* Hero Section */
+        /* Hero Section with Giant Watermark Fork */
         .hero {
-            height: 90vh;
+            min-height: 95vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             background: linear-gradient(135deg, #8C1D40 0%, #5c1b54 50%, #2a081a 100%);
-            padding: 2rem;
+            padding: 4rem 2rem;
             position: relative;
+            overflow: hidden;
         }
 
-        /* NEW: Continuous Pulse Glow Animation */
+        /* Giant Background Pitchfork Watermark */
+        .hero-bg-fork {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: min(600px, 90vw);
+            opacity: 0.12;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero > *:not(.hero-bg-fork) {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Continuous Pulse Glow Animation for Logo */
         @keyframes pulse-glow {
             0% { transform: scale(1); box-shadow: 0 0 30px rgba(255, 214, 77, 0.4); }
             50% { transform: scale(1.05); box-shadow: 0 0 70px rgba(255, 214, 77, 0.9); }
@@ -101,7 +119,6 @@
             justify-content: center;
             align-items: center;
             background-color: var(--cream);
-            /* Applies the pulse effect */
             animation: pulse-glow 3.5s infinite ease-in-out;
         }
 
@@ -362,40 +379,20 @@
             margin-top: 5rem;
             border-top: 5px solid var(--bright-gold);
             color: #F8F6F0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
+            text-align: center;
         }
 
-        .footer-left {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .fork-logo {
-            height: 60px;
-            width: auto;
-            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4));
-        }
-
-        .footer-left h2 {
+        footer h2 {
             color: var(--bright-gold);
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin: 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
         }
 
-        .footer-right {
-            text-align: right;
-        }
-
-        .footer-right p {
+        footer p {
             font-weight: bold;
             letter-spacing: 1px;
             margin-bottom: 0.5rem;
@@ -408,22 +405,7 @@
             font-weight: normal;
             opacity: 0.8;
             margin-top: 1.5rem;
-        }
-
-        /* Make footer stack neatly on mobile */
-        @media (max-width: 768px) {
-            footer {
-                flex-direction: column;
-                text-align: center;
-                justify-content: center;
-            }
-            .footer-left {
-                flex-direction: column;
-                justify-content: center;
-            }
-            .footer-right {
-                text-align: center;
-            }
+            text-transform: none !important;
         }
     </style>
 </head>
@@ -434,9 +416,10 @@
         <button id="theme-toggle" class="btn btn-gold">Light/Dark Mode</button>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Giant Pitchfork Watermark -->
     <header class="hero">
-        <!-- The data-aos animation has been removed so it loads instantly -->
+        <img src="fork.png" alt="" class="hero-bg-fork">
+
         <div class="logo-mask">
             <img src="logo.png" alt="ASU Women's Club Soccer Logo">
         </div>
@@ -492,7 +475,7 @@
                 <a href="tel:5056997893" class="phone">📞 (505) 699-7893</a>
             </div>
             <div class="card" data-aos="fade-up" data-aos-delay="200">
-                <img src="mia.jpg" alt="Mia Rosta" class="spotlight-img">
+                <img src="miarosta.png" alt="Mia Rosta" class="spotlight-img">
                 <div class="role">Vice President</div>
                 <h3>Mia Rosta</h3>
                 <a href="tel:6025052365" class="phone">📞 (602) 505-2365</a>
@@ -602,15 +585,10 @@
 
     <!-- FEAR THE FORK FOOTER -->
     <footer>
-        <div class="footer-left">
-            <img src="fork.png" alt="ASU Pitchfork" class="fork-logo">
-            <h2>Fear The Fork.</h2>
-        </div>
-        <div class="footer-right">
-            <p>@womensclubsoccer_asu • Contact The Club</p>
-            <p style="font-size: 0.9rem; margin-top: 1rem; text-transform: none;">&copy; 2026 ASU Women's Club Soccer. All rights reserved.</p>
-            <p class="credits">Website designed and built by Sally Al Khayyat</p>
-        </div>
+        <h2>Fear The Fork.</h2>
+        <p>@womensclubsoccer_asu • Contact The Club</p>
+        <p style="font-size: 0.9rem; margin-top: 1rem; text-transform: none;">&copy; 2026 ASU Women's Club Soccer. All rights reserved.</p>
+        <p class="credits">Website designed and built by Sally Al Khayyat</p>
     </footer>
 
     <!-- Scripts -->
