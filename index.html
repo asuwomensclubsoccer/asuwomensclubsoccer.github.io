@@ -347,20 +347,52 @@
             background-color: #ffcf40;
         }
 
-        /* Footer */
+        /* NEW FEAR THE FORK FOOTER */
         footer {
             background-color: var(--maroon);
-            text-align: center;
-            padding: 3rem 1rem 2rem;
+            padding: 4rem 2rem;
             margin-top: 5rem;
             border-top: 5px solid var(--bright-gold);
             color: #F8F6F0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
         }
 
-        footer p {
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .fork-logo {
+            height: 60px;
+            width: auto;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4));
+        }
+
+        .footer-left h2 {
+            color: var(--bright-gold);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .footer-right {
+            text-align: right;
+        }
+
+        .footer-right p {
             font-weight: bold;
             letter-spacing: 1px;
             margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            color: var(--cream);
         }
 
         .credits {
@@ -368,6 +400,22 @@
             font-weight: normal;
             opacity: 0.8;
             margin-top: 1.5rem;
+        }
+
+        /* Make footer stack neatly on mobile */
+        @media (max-width: 768px) {
+            footer {
+                flex-direction: column;
+                text-align: center;
+                justify-content: center;
+            }
+            .footer-left {
+                flex-direction: column;
+                justify-content: center;
+            }
+            .footer-right {
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -381,7 +429,6 @@
     <!-- Hero Section -->
     <header class="hero">
         <div class="logo-mask" data-aos="zoom-in" data-aos-duration="1000">
-            <!-- Ensure logo.png is uploaded to your repository! -->
             <img src="logo.png" alt="ASU Women's Club Soccer Logo">
         </div>
         <h1 data-aos="fade-up" data-aos-delay="150">Women's Club Soccer</h1>
@@ -430,35 +477,30 @@
         </div>
         <div class="grid">
             <div class="card" data-aos="fade-up" data-aos-delay="100">
-                <!-- Ensure trinity.jpg is uploaded -->
                 <img src="trinity.jpg" alt="Trinity Romero" class="spotlight-img">
                 <div class="role">President</div>
                 <h3>Trinity Romero</h3>
                 <a href="tel:5056997893" class="phone">📞 (505) 699-7893</a>
             </div>
             <div class="card" data-aos="fade-up" data-aos-delay="200">
-                <!-- Ensure mia.jpg is uploaded -->
                 <img src="mia.jpg" alt="Mia Rosta" class="spotlight-img">
                 <div class="role">Vice President</div>
                 <h3>Mia Rosta</h3>
                 <a href="tel:6025052365" class="phone">📞 (602) 505-2365</a>
             </div>
             <div class="card" data-aos="fade-up" data-aos-delay="300">
-                <!-- Ensure hannah.jpg is uploaded -->
                 <img src="hannah.jpg" alt="Hannah Thebeau" class="spotlight-img">
                 <div class="role">Finance</div>
                 <h3>Hannah Thebeau</h3>
                 <a href="tel:4194605098" class="phone">📞 (419) 460-5098</a>
             </div>
             <div class="card" data-aos="fade-up" data-aos-delay="400">
-                <!-- Ensure kaylee.jpg is uploaded -->
                 <img src="kaylee.jpg" alt="Kaylee Gerardot" class="spotlight-img">
                 <div class="role">PR & Media</div>
                 <h3>Kaylee Gerardot</h3>
                 <a href="tel:2095076493" class="phone">📞 (209) 507-6493</a>
             </div>
             <div class="card" data-aos="fade-up" data-aos-delay="500">
-                <!-- Ensure bree.jpg is uploaded -->
                 <img src="bree.jpg" alt="Bree Sanderson" class="spotlight-img">
                 <div class="role">Service</div>
                 <h3>Bree Sanderson</h3>
@@ -549,9 +591,17 @@
         </div>
     </section>
 
+    <!-- NEW FEAR THE FORK FOOTER -->
     <footer>
-        <p>&copy; 2026 ASU Women's Club Soccer. All rights reserved.</p>
-        <p class="credits">Website designed and built by Sally Al Khayyat</p>
+        <div class="footer-left">
+            <img src="fork.png" alt="ASU Pitchfork" class="fork-logo">
+            <h2>Fear The Fork.</h2>
+        </div>
+        <div class="footer-right">
+            <p>@womensclubsoccer_asu • Contact The Club</p>
+            <p style="font-size: 0.9rem; margin-top: 1rem; text-transform: none;">&copy; 2026 ASU Women's Club Soccer. All rights reserved.</p>
+            <p class="credits">Website designed and built by Sally Al Khayyat</p>
+        </div>
     </footer>
 
     <!-- Scripts -->
