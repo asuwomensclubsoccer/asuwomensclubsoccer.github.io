@@ -70,7 +70,7 @@
             border: none;
         }
 
-        /* Hero Section - Arizona Sunset Pride Gradient */
+        /* Hero Section */
         .hero {
             height: 90vh;
             display: flex;
@@ -83,7 +83,6 @@
             position: relative;
         }
 
-        /* THE FINAL PERFECT LOGO FIX */
         .logo-mask {
             width: 260px;
             height: 260px;
@@ -233,10 +232,12 @@
             box-shadow: 0 12px 25px rgba(0,0,0,0.2);
         }
         
-        /* Spotlight Images */
+        /* Spotlight & Exec Images */
         .spotlight-img {
             width: 100%;
             height: auto;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
             border-radius: 4px;
             border: 2px solid var(--bg-color);
             margin-bottom: 1.5rem;
@@ -299,7 +300,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: grayscale(100%) contrast(1.1); /* Black and white by default */
+            filter: grayscale(100%) contrast(1.1);
             transition: filter 0.4s ease, transform 0.4s ease;
         }
 
@@ -309,8 +310,8 @@
         }
 
         .gallery-item:hover img {
-            filter: grayscale(0%) contrast(1); /* Bursts into color */
-            transform: scale(1.08); /* Slight zoom on hover */
+            filter: grayscale(0%) contrast(1);
+            transform: scale(1.08); 
         }
 
         /* Buttons */
@@ -380,6 +381,7 @@
     <!-- Hero Section -->
     <header class="hero">
         <div class="logo-mask" data-aos="zoom-in" data-aos-duration="1000">
+            <!-- Ensure logo.png is uploaded to your repository! -->
             <img src="logo.png" alt="ASU Women's Club Soccer Logo">
         </div>
         <h1 data-aos="fade-up" data-aos-delay="150">Women's Club Soccer</h1>
@@ -428,26 +430,36 @@
         </div>
         <div class="grid">
             <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <!-- Ensure trinity.jpg is uploaded -->
+                <img src="trinity.jpg" alt="Trinity Romero" class="spotlight-img">
                 <div class="role">President</div>
                 <h3>Trinity Romero</h3>
                 <a href="tel:5056997893" class="phone">📞 (505) 699-7893</a>
             </div>
             <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <!-- Ensure mia.jpg is uploaded -->
+                <img src="mia.jpg" alt="Mia Rosta" class="spotlight-img">
                 <div class="role">Vice President</div>
                 <h3>Mia Rosta</h3>
                 <a href="tel:6025052365" class="phone">📞 (602) 505-2365</a>
             </div>
             <div class="card" data-aos="fade-up" data-aos-delay="300">
+                <!-- Ensure hannah.jpg is uploaded -->
+                <img src="hannah.jpg" alt="Hannah Thebeau" class="spotlight-img">
                 <div class="role">Finance</div>
                 <h3>Hannah Thebeau</h3>
                 <a href="tel:4194605098" class="phone">📞 (419) 460-5098</a>
             </div>
             <div class="card" data-aos="fade-up" data-aos-delay="400">
+                <!-- Ensure kaylee.jpg is uploaded -->
+                <img src="kaylee.jpg" alt="Kaylee Gerardot" class="spotlight-img">
                 <div class="role">PR & Media</div>
                 <h3>Kaylee Gerardot</h3>
                 <a href="tel:2095076493" class="phone">📞 (209) 507-6493</a>
             </div>
             <div class="card" data-aos="fade-up" data-aos-delay="500">
+                <!-- Ensure bree.jpg is uploaded -->
+                <img src="bree.jpg" alt="Bree Sanderson" class="spotlight-img">
                 <div class="role">Service</div>
                 <h3>Bree Sanderson</h3>
                 <a href="tel:9494624033" class="phone">📞 (949) 462-4033</a>
