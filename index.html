@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASU Women's Club Soccer</title>
+    <!-- AOS Animation Library CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* CSS Variables - Default Dark Mode */
+        :root {
+            --maroon: #8C1D40;
+            --gold: #FFC627;
+            --bright-gold: #FFD64D;
+            --bg-color: #0a0a0a;
+            --text-color: #fdfdfd;
+            --card-bg: #151515;
+            --text-muted: #ccc;
+            --cream: #F8F6F0;
+        }
+
+        /* Light Mode Overrides */
+        body.light-mode {
+            --bg-color: #F8F6F0;
+            --text-color: #222222;
+            --card-bg: #ffffff;
+            --text-muted: #555555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--maroon);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            border-bottom: 3px solid var(--bright-gold);
+        }
+
+        nav h2 {
+            color: var(--bright-gold);
+            font-weight: 900;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-size: clamp(1rem, 3vw, 1.5rem);
+        }
+
+        #theme-toggle {
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            border: none;
+        }
+
+        /* Hero Section - Arizona Sunset Pride Gradient */
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #8C1D40 0%, #5c1b54 50%, #2a081a 100%);
+            padding: 2rem;
+            position: relative;
+        }
+
+        /* THE FINAL PERFECT LOGO FIX */
+        .logo-mask {
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            overflow: hidden; 
+            border: 4px solid var(--bright-gold);
+            box-shadow: 0 0 40px rgba(255, 214, 77, 0.5);
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--cream);
+        }
+
+        .logo-mask img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transform: scale(1.25); 
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            color: var(--bright-gold);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 900;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #fff;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .accolades {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .badge {
+            background-color: var(--bright-gold);
+            color: #0a0a0a;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 900;
+            font-size: 1rem;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.3);
+            text-transform: uppercase;
+            transform: skewX(-5deg);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        h2.section-title {
+            color: var(--maroon);
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 900;
+            display: inline-block;
+        }
+
+        body:not(.light-mode) h2.section-title {
+            color: var(--bright-gold);
+        }
+
+        h2.section-title::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 4px;
+            background-color: var(--maroon);
+            margin: 10px auto 0;
+            transform: skewX(-15deg);
+        }
+
+        .text-center { text-align: center; }
+
+        /* Tryouts Banner */
+        .tryout-wrapper { padding: 2rem 0; }
+        
+        .tryout-banner {
+            background: linear-gradient(135deg, #a62a50, #8C1D40 70%, #6f1632);
+            border: 3px solid var(--bright-gold);
+            border-radius: 4px;
+            padding: 3.5rem 2rem;
+            text-align: center;
+            transform: skewY(-1deg);
+            box-shadow: 12px 12px 0px rgba(0,0,0,0.2);
+            margin: 0 auto;
+            max-width: 900px;
+        }
+
+        .tryout-content { transform: skewY(1deg); }
+
+        .tryout-banner h3 {
+            font-size: 2.5rem;
+            color: var(--bright-gold);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+
+        .tryout-banner p {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+
+        /* Grid & Cards */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-top: 4px solid var(--maroon);
+            border-radius: 8px;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-top: 4px solid var(--bright-gold);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+        }
+        
+        /* Spotlight Images */
+        .spotlight-img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            border: 2px solid var(--bg-color);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .card:hover .spotlight-img {
+            border-color: var(--bright-gold);
+            transform: scale(1.02);
+        }
+
+        .card .role {
+            color: var(--maroon);
+            font-size: 1.1rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.8rem;
+        }
+
+        body:not(.light-mode) .card .role {
+            color: var(--bright-gold);
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+
+        .card .phone, .card .position {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: color 0.2s ease;
+        }
+
+        .card .phone:hover { color: var(--maroon); font-weight: bold; }
+        body:not(.light-mode) .card .phone:hover { color: var(--bright-gold); }
+
+        /* Highlight Reel Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            border: 3px solid var(--maroon);
+            background-color: #000;
+            aspect-ratio: 1 / 1;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.1); /* Black and white by default */
+            transition: filter 0.4s ease, transform 0.4s ease;
+        }
+
+        .gallery-item:hover {
+            border-color: var(--bright-gold);
+            transform: translateY(-5px);
+        }
+
+        .gallery-item:hover img {
+            filter: grayscale(0%) contrast(1); /* Bursts into color */
+            transform: scale(1.08); /* Slight zoom on hover */
+        }
+
+        /* Buttons */
+        .btn-container {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2.5rem;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            font-weight: 900;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            display: inline-block;
+            transform: skewX(-3deg);
+        }
+
+        .btn-gold {
+            background-color: var(--bright-gold);
+            color: #0a0a0a;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.3);
+        }
+
+        .btn:hover {
+            transform: skewX(-3deg) translateY(-3px);
+            box-shadow: 6px 6px 0px rgba(0,0,0,0.5);
+            background-color: #ffcf40;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--maroon);
+            text-align: center;
+            padding: 3rem 1rem 2rem;
+            margin-top: 5rem;
+            border-top: 5px solid var(--bright-gold);
+            color: #F8F6F0;
+        }
+
+        footer p {
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .credits {
+            font-size: 0.9rem;
+            font-weight: normal;
+            opacity: 0.8;
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <h2>ASU Women's Club Soccer</h2>
+        <button id="theme-toggle" class="btn btn-gold">Light/Dark Mode</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="logo-mask" data-aos="zoom-in" data-aos-duration="1000">
+            <img src="logo.png" alt="ASU Women's Club Soccer Logo">
+        </div>
+        <h1 data-aos="fade-up" data-aos-delay="150">Women's Club Soccer</h1>
+        <p data-aos="fade-up" data-aos-delay="300">Arizona State University</p>
+        
+        <div class="accolades" data-aos="fade-up" data-aos-delay="450">
+            <div class="badge">🏆 2023 Regional Champs</div>
+            <div class="badge">🥇 2024 Aztec Cup Champs</div>
+            <div class="badge">🔥 Ranked #8 in Nation</div>
+        </div>
+    </header>
+
+    <!-- Tryouts Announcement -->
+    <section id="tryouts">
+        <div class="tryout-wrapper" data-aos="zoom-in">
+            <div class="tryout-banner">
+                <div class="tryout-content">
+                    <h3>⚽ Fall 2026 Tryouts</h3>
+                    <p><strong>DATES:</strong> Wednesday, Aug 25 – Friday, Aug 27</p>
+                    <p><strong>TIME:</strong> Aug 25: 8–10 PM | Aug 26 & 27: 9–11 PM</p>
+                    <p><strong>LOCATION:</strong> 510 S Dorsey Lane (Turf Field)</p>
+                    <p><strong>FEE:</strong> $30</p>
+                    <p style="font-size: 1rem; color: var(--bright-gold); margin-top: 1rem; font-weight: bold;">*PLEASE ARRIVE 15 MIN EARLY FOR CHECK-IN</p>
+                    <div class="btn-container">
+                        <a href="https://linktr.ee/kayleegerardot06" target="_blank" class="btn btn-gold">Fill Out Tryout Form</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="text-center" data-aos="fade-up">
+            <h2 class="section-title">About Us</h2>
+            <p style="font-size: 1.25rem; line-height: 1.8; max-width: 800px; margin: 0 auto; color: var(--text-muted);">
+                We are the official Women's Club Soccer Team at Arizona State University. Competing nationally and representing Sun Devil athletics with pride, our program brings together competitive spirit, teamwork, and community. Go Devils!
+            </p>
+        </div>
+    </section>
+
+    <!-- Exec Board Section -->
+    <section id="board">
+        <div class="text-center" data-aos="fade-up">
+            <h2 class="section-title">Executive Board</h2>
+        </div>
+        <div class="grid">
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <div class="role">President</div>
+                <h3>Trinity Romero</h3>
+                <a href="tel:5056997893" class="phone">📞 (505) 699-7893</a>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <div class="role">Vice President</div>
+                <h3>Mia Rosta</h3>
+                <a href="tel:6025052365" class="phone">📞 (602) 505-2365</a>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="300">
+                <div class="role">Finance</div>
+                <h3>Hannah Thebeau</h3>
+                <a href="tel:4194605098" class="phone">📞 (419) 460-5098</a>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="400">
+                <div class="role">PR & Media</div>
+                <h3>Kaylee Gerardot</h3>
+                <a href="tel:2095076493" class="phone">📞 (209) 507-6493</a>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="500">
+                <div class="role">Service</div>
+                <h3>Bree Sanderson</h3>
+                <a href="tel:9494624033" class="phone">📞 (949) 462-4033</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Senior Spotlight Section -->
+    <section id="spotlight">
+        <div class="text-center" data-aos="fade-up">
+            <h2 class="section-title">Senior Spotlight</h2>
+            <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 3rem;">Honoring our recent graduates and their dedication to the club.</p>
+        </div>
+        <div class="grid">
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <img src="sydney.jpg" alt="Sydney Sventek" class="spotlight-img">
+                <div class="role">Former President</div>
+                <h3>Sydney Sventek</h3>
+                <div class="position">Outside Forward</div>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <img src="alexandria.jpg" alt="Alexandria Koklys" class="spotlight-img">
+                <div class="role">Midfield #33</div>
+                <h3>Alexandria Koklys</h3>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="300">
+                <img src="delaney.jpg" alt="Delaney Wade" class="spotlight-img">
+                <div class="role">Goalkeeper</div>
+                <h3>Delaney Wade</h3>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="400">
+                <img src="sami.jpg" alt="Sami Battenfield" class="spotlight-img">
+                <div class="role">Center Forward</div>
+                <h3>Sami Battenfield</h3>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="500">
+                <img src="aubriella.jpg" alt="Aubriella Whisler" class="spotlight-img">
+                <div class="role">Goalkeeper</div>
+                <h3>Aubriella Whisler</h3>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="600">
+                <img src="cassidy.jpg" alt="Cassidy Howell" class="spotlight-img">
+                <div class="role">Center Back</div>
+                <h3>Cassidy Howell</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sparky's Highlight Reel -->
+    <section id="highlights">
+        <div class="text-center" data-aos="fade-up">
+            <h2 class="section-title">Sparky's Highlight Reel</h2>
+            <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 3rem;">Moments of Sun Devil pride on and off the pitch. Hover to view.</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://placehold.co/600x600/8C1D40/FFC627?text=Highlight+1" alt="Placeholder 1">
+            </div>
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://placehold.co/600x600/8C1D40/FFC627?text=Highlight+2" alt="Placeholder 2">
+            </div>
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
+                <img src="https://placehold.co/600x600/8C1D40/FFC627?text=Highlight+3" alt="Placeholder 3">
+            </div>
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="400">
+                <img src="https://placehold.co/600x600/8C1D40/FFC627?text=Highlight+4" alt="Placeholder 4">
+            </div>
+        </div>
+    </section>
+
+    <!-- Connect & GroupMe Section -->
+    <section id="connect">
+        <div class="text-center" data-aos="fade-up">
+            <h2 class="section-title">Connect With Us</h2>
+            <p style="color: var(--text-muted); font-size: 1.1rem;">Follow our season updates or get in touch through our team channels.</p>
+            
+            <div class="btn-container">
+                <a href="https://instagram.com/womensclubsoccer_asu" target="_blank" class="btn btn-gold">Instagram</a>
+                <a href="https://linktr.ee/kayleegerardot06" target="_blank" class="btn btn-gold">Linktree</a>
+            </div>
+
+            <h3 style="margin-top: 4rem; margin-bottom: 1.5rem; text-transform: uppercase; font-weight: 900; font-size: 1.8rem;">Team Communications</h3>
+            <div class="btn-container">
+                <a href="#" class="btn btn-gold">Gold Team GroupMe</a>
+                <a href="#" class="btn btn-gold">Maroon Team GroupMe</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 ASU Women's Club Soccer. All rights reserved.</p>
+        <p class="credits">Website designed and built by Sally Al Khayyat</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Animations
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 80
+        });
+
+        // Light/Dark Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+        });
+    </script>
+</body>
+</html>
