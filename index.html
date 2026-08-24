@@ -215,6 +215,45 @@
             letter-spacing: 0.5px;
         }
 
+        /* Schedule Section Styling */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .schedule-card {
+            background-color: var(--card-bg);
+            border: 3px solid var(--bright-gold);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .schedule-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .schedule-card h3 {
+            color: var(--bright-gold);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .schedule-img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            border: 2px solid var(--maroon);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        }
+
         /* Grid & Cards */
         .grid {
             display: grid;
@@ -352,7 +391,7 @@
             background-color: #ffcf40;
         }
 
-        /* HIGH-VISIBILITY FOOTER WITH STRIKING CONTRAST GRADIENT & HUGE FORK */
+        /* High-Visibility Footer */
         footer {
             background: linear-gradient(135deg, #1a0208 0%, #4a0d1f 50%, #8C1D40 100%);
             padding: 5rem 2rem;
@@ -374,7 +413,7 @@
         }
 
         .footer-fork {
-            height: 160px; /* Made even larger and more prominent! */
+            height: 160px;
             width: auto;
             display: block;
         }
@@ -413,7 +452,7 @@
         <button id="theme-toggle" class="btn btn-gold">Light/Dark Mode</button>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Top Hero Section with Round Sparky Logo -->
     <header class="hero">
         <div class="logo-mask">
             <img src="logo.png" alt="ASU Women's Club Soccer Logo">
@@ -443,6 +482,24 @@
                         <a href="https://linktr.ee/kayleegerardot06" target="_blank" class="btn btn-gold">Fill Out Tryout Form</a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fall 2026 Game Schedules Section -->
+    <section id="schedule">
+        <div class="text-center" data-aos="fade-up">
+            <h2 class="section-title">Fall 2026 Match Schedules</h2>
+            <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2rem;">Check out the upcoming fixtures for our Gold and Maroon teams.</p>
+        </div>
+        <div class="schedule-grid">
+            <div class="schedule-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>Gold Schedule</h3>
+                <img src="goldsoccer.jpg" alt="ASU Women's Club Soccer Gold Schedule" class="schedule-img">
+            </div>
+            <div class="schedule-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>Maroon Schedule</h3>
+                <img src="maroonsoccer.jpg" alt="ASU Women's Club Soccer Maroon Schedule" class="schedule-img">
             </div>
         </div>
     </section>
@@ -578,7 +635,7 @@
         </div>
     </section>
 
-    <!-- HIGH-VISIBILITY FEAR THE FORK FOOTER -->
+    <!-- Footer -->
     <footer>
         <div class="footer-fork-container">
             <img src="asufork.png" alt="ASU Fork Logo" class="footer-fork">
