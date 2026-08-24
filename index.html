@@ -215,7 +215,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* Schedule Section Styling */
+        /* Perfectly Matched Interactive Schedule Section */
         .schedule-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -226,32 +226,49 @@
         .schedule-card {
             background-color: var(--card-bg);
             border: 3px solid var(--bright-gold);
-            border-radius: 8px;
-            padding: 1.5rem;
+            border-radius: 12px;
+            padding: 2rem;
             text-align: center;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         .schedule-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(255, 214, 77, 0.2);
+            border-color: #fff;
         }
 
         .schedule-card h3 {
             color: var(--bright-gold);
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 1.5rem;
             text-transform: uppercase;
             font-weight: 900;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+        }
+
+        .schedule-img-container {
+            width: 100%;
+            height: 550px; /* Locks both schedule cards to the exact same uniform height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+            border-radius: 8px;
+            border: 2px solid var(--maroon);
+            overflow: hidden;
         }
 
         .schedule-img {
             width: 100%;
-            height: auto;
-            border-radius: 6px;
-            border: 2px solid var(--maroon);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            height: 100%;
+            object-fit: contain; /* Prevents stretching and mismatched sizes */
+            transition: transform 0.4s ease;
+        }
+
+        .schedule-card:hover .schedule-img {
+            transform: scale(1.03);
         }
 
         /* Grid & Cards */
@@ -486,7 +503,7 @@
         </div>
     </section>
 
-    <!-- Fall 2026 Game Schedules Section -->
+    <!-- Fall 2026 Game Schedules Section (Matched & Interactive) -->
     <section id="schedule">
         <div class="text-center" data-aos="fade-up">
             <h2 class="section-title">Fall 2026 Match Schedules</h2>
@@ -495,11 +512,15 @@
         <div class="schedule-grid">
             <div class="schedule-card" data-aos="fade-up" data-aos-delay="100">
                 <h3>Gold Schedule</h3>
-                <img src="goldsoccer.jpg" alt="ASU Women's Club Soccer Gold Schedule" class="schedule-img">
+                <div class="schedule-img-container">
+                    <img src="goldsoccer.jpg" alt="ASU Women's Club Soccer Gold Schedule" class="schedule-img">
+                </div>
             </div>
             <div class="schedule-card" data-aos="fade-up" data-aos-delay="200">
                 <h3>Maroon Schedule</h3>
-                <img src="maroonsoccer.jpg" alt="ASU Women's Club Soccer Maroon Schedule" class="schedule-img">
+                <div class="schedule-img-container">
+                    <img src="maroonsoccer.jpg" alt="ASU Women's Club Soccer Maroon Schedule" class="schedule-img">
+                </div>
             </div>
         </div>
     </section>
@@ -594,7 +615,7 @@
         </div>
     </section>
 
-    <!-- Sparky's Highlight Reel -->
+    <!-- Sparky's Highlight Reel (Updated with your real photos!) -->
     <section id="highlights">
         <div class="text-center" data-aos="fade-up">
             <h2 class="section-title">Sparky's Highlight Reel</h2>
@@ -602,10 +623,10 @@
         </div>
         <div class="gallery-grid">
             <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
-                <img src="https://placehold.co/600x600/8C1D40/FFC627?text=Highlight+1" alt="Placeholder 1">
+                <img src="asufunny.jpg" alt="Team Fun Moment">
             </div>
             <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
-                <img src="https://placehold.co/600x600/8C1D40/FFC627?text=Highlight+2" alt="Placeholder 2">
+                <img src="yearlybanquet.jpg" alt="Yearly Banquet">
             </div>
             <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
                 <img src="https://placehold.co/600x600/8C1D40/FFC627?text=Highlight+3" alt="Placeholder 3">
