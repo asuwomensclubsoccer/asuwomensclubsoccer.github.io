@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ASU Women's Club Soccer</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
     <!-- AOS Animation Library CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
@@ -183,39 +185,102 @@
 
         .text-center { text-align: center; }
 
-        /* Tryouts Banner */
-        .tryout-wrapper { padding: 2rem 0; }
-        
-        .tryout-banner {
-            background: linear-gradient(135deg, #a62a50, #8C1D40 70%, #6f1632);
+        /* Coach Spotlight Section Styles with Smooth Image Slideshow */
+        .coach-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .coach-card {
+            background-color: var(--card-bg);
             border: 3px solid var(--bright-gold);
-            border-radius: 4px;
-            padding: 3.5rem 2rem;
-            text-align: center;
-            transform: skewY(-1deg);
-            box-shadow: 12px 12px 0px rgba(0,0,0,0.2);
-            margin: 0 auto;
+            border-radius: 12px;
+            padding: 3rem 2.5rem;
             max-width: 900px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 2.5rem;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            transition: transform 0.3s ease;
         }
 
-        .tryout-content { transform: skewY(1deg); }
+        @media (max-width: 768px) {
+            .coach-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
 
-        .tryout-banner h3 {
-            font-size: 2.5rem;
-            color: var(--bright-gold);
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
+        .coach-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .coach-img-container {
+            width: 100%;
+            height: 320px;
+            position: relative;
+            border-radius: 8px;
+            border: 2px solid var(--maroon);
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            background: #000;
+        }
+
+        .coach-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .coach-img.active {
+            opacity: 1;
+        }
+
+        .coach-info {
+            text-align: left;
+        }
+
+        @media (max-width: 768px) {
+            .coach-info {
+                text-align: center;
+            }
+        }
+
+        .coach-card .role {
+            color: var(--maroon);
+            font-size: 1.1rem;
             font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
         }
 
-        .tryout-banner p {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            color: #fff;
-            letter-spacing: 0.5px;
+        body:not(.light-mode) .coach-card .role {
+            color: var(--bright-gold);
         }
 
-        /* Perfectly Matched Interactive Schedule Section */
+        .coach-card h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1.2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .coach-bio {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-muted);
+        }
+
+        /* Matched & Interactive Schedule Section */
         .schedule-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -250,7 +315,7 @@
 
         .schedule-img-container {
             width: 100%;
-            height: 550px; /* Locks both schedule cards to the exact same uniform height */
+            height: 550px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -263,7 +328,7 @@
         .schedule-img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Prevents stretching and mismatched sizes */
+            object-fit: contain;
             transition: transform 0.4s ease;
         }
 
@@ -484,26 +549,32 @@
         </div>
     </header>
 
-    <!-- Tryouts Announcement -->
-    <section id="tryouts">
-        <div class="tryout-wrapper" data-aos="zoom-in">
-            <div class="tryout-banner">
-                <div class="tryout-content">
-                    <h3>⚽ Fall 2026 Tryouts</h3>
-                    <p><strong>DATES:</strong> Wednesday, Aug 25 – Friday, Aug 27</p>
-                    <p><strong>TIME:</strong> Aug 25: 8–10 PM | Aug 26 & 27: 9–11 PM</p>
-                    <p><strong>LOCATION:</strong> 510 S Dorsey Lane (Turf Field)</p>
-                    <p><strong>FEE:</strong> $30</p>
-                    <p style="font-size: 1rem; color: var(--bright-gold); margin-top: 1rem; font-weight: bold;">*PLEASE ARRIVE 15 MIN EARLY FOR CHECK-IN</p>
-                    <div class="btn-container">
-                        <a href="https://linktr.ee/kayleegerardot06" target="_blank" class="btn btn-gold">Fill Out Tryout Form</a>
-                    </div>
+    <!-- Meet Our Coach Section with Auto-Slideshow -->
+    <section id="coach">
+        <div class="text-center" data-aos="fade-up">
+            <h2 class="section-title">Meet Our Coach</h2>
+            <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1rem;">Leadership and high-level experience guiding our program on and off the pitch.</p>
+        </div>
+        <div class="coach-container" data-aos="fade-up" data-aos-delay="150">
+            <div class="coach-card">
+                <div class="coach-img-container">
+                    <img src="Coach1.jpg" alt="Coach Victor Vargas" class="coach-img active">
+                    <img src="Coach2.jpg" alt="Coach Victor Vargas" class="coach-img">
+                    <img src="Coach3.jpg" alt="Coach Victor Vargas" class="coach-img">
+                    <img src="Coach4.jpg" alt="Coach Victor Vargas" class="coach-img">
+                </div>
+                <div class="coach-info">
+                    <div class="role">Head Coach</div>
+                    <h3>Victor Vargas</h3>
+                    <p class="coach-bio">
+                        Victor Vargas brings elite playing and coaching experience to ASU Women's Club Soccer as a former professional footballer. Having previously played for Phoenix City FC, Coach Vargas channels his high-level background into developing competitive excellence, tactical discipline, and teamwork. Under his leadership, he notably won the Arizona Champions League on September 5, 2023. Go Devils!
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Fall 2026 Game Schedules Section (Matched & Interactive) -->
+    <!-- Fall 2026 Game Schedules Section -->
     <section id="schedule">
         <div class="text-center" data-aos="fade-up">
             <h2 class="section-title">Fall 2026 Match Schedules</h2>
@@ -615,7 +686,7 @@
         </div>
     </section>
 
-    <!-- Sparky's Highlight Reel (Updated with your real photos!) -->
+    <!-- Sparky's Highlight Reel -->
     <section id="highlights">
         <div class="text-center" data-aos="fade-up">
             <h2 class="section-title">Sparky's Highlight Reel</h2>
@@ -682,6 +753,19 @@
         themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('light-mode');
         });
+
+        // Smooth Coach Image Slideshow Script
+        const coachImages = document.querySelectorAll('.coach-img');
+        let currentCoachIndex = 0;
+
+        function rotateCoachImages() {
+            coachImages[currentCoachIndex].classList.remove('active');
+            currentCoachIndex = (currentCoachIndex + 1) % coachImages.length;
+            coachImages[currentCoachIndex].classList.add('active');
+        }
+
+        // Changes the coach picture smoothly every 4 seconds
+        setInterval(rotateCoachImages, 4000);
     </script>
 </body>
 </html>
