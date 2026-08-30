@@ -278,7 +278,7 @@
             color: var(--text-muted);
         }
 
-        /* Matched & Interactive Schedule Section */
+        /* Schedule Section & Click-to-Zoom Modal Effect */
         .schedule-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -321,6 +321,27 @@
             border-radius: 8px;
             border: 2px solid var(--maroon);
             overflow: hidden;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .schedule-img-container::after {
+            content: '🔍 Click to Enlarge';
+            position: absolute;
+            bottom: 10px;
+            background: rgba(140, 29, 64, 0.85);
+            color: var(--bright-gold);
+            padding: 6px 14px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .schedule-img-container:hover::after {
+            opacity: 1;
         }
 
         .schedule-img {
@@ -332,6 +353,59 @@
 
         .schedule-card:hover .schedule-img {
             transform: scale(1.03);
+        }
+
+        /* Fullscreen Image Lightbox Modal */
+        #schedule-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            padding: 2rem;
+        }
+
+        #schedule-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #schedule-modal img {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            border: 3px solid var(--bright-gold);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+
+        #schedule-modal.active img {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            color: #fff;
+            font-size: 3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--bright-gold);
         }
 
         /* Grid & Cards */
@@ -573,23 +647,28 @@
     <section id="schedule">
         <div class="text-center" data-aos="fade-up">
             <h2 class="section-title">Fall 2026 Match Schedules</h2>
-            <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2rem;">Check out the upcoming fixtures for our Gold and Maroon teams.</p>
+            <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2rem;">Click on either schedule to enlarge and view details.</p>
         </div>
         <div class="schedule-grid">
             <div class="schedule-card" data-aos="fade-up" data-aos-delay="100">
                 <h3>Gold Schedule</h3>
-                <div class="schedule-img-container">
+                <div class="schedule-img-container" onclick="openModal('goldsoccer.jpg')">
                     <img src="goldsoccer.jpg" alt="ASU Women's Club Soccer Gold Schedule" class="schedule-img">
                 </div>
             </div>
             <div class="schedule-card" data-aos="fade-up" data-aos-delay="200">
                 <h3>Maroon Schedule</h3>
-                <div class="schedule-img-container">
+                <div class="schedule-img-container" onclick="openModal('maroonsoccer.jpg')">
                     <img src="maroonsoccer.jpg" alt="ASU Women's Club Soccer Maroon Schedule" class="schedule-img">
                 </div>
             </div>
         </div>
     </section>
+
+    <div id="schedule-modal" onclick="closeModal()">
+        <span class="modal-close">&times;</span>
+        <img id="modal-img" src="" alt="Enlarged Schedule">
+    </div>
 
     <section id="about">
         <div class="text-center" data-aos="fade-up">
@@ -752,8 +831,20 @@
             coachImages[currentCoachIndex].classList.add('active');
         }
 
-        // Changes the coach picture smoothly every 4 seconds
         setInterval(rotateCoachImages, 4000);
+
+        // Schedule Lightbox Modal Functions
+        function openModal(imageSrc) {
+            const modal = document.getElementById('schedule-modal');
+            const modalImg = document.getElementById('modal-img');
+            modalImg.src = imageSrc;
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('schedule-modal');
+            modal.classList.remove('active');
+        }
     </script>
 </body>
 </html>
